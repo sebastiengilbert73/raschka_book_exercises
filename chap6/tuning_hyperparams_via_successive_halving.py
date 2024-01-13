@@ -9,6 +9,8 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 import scipy.stats
+from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, matthews_corrcoef
+
 
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname)s %(message)s')
@@ -51,6 +53,19 @@ def main():
     clf = hs.best_estimator_
     #clf.fit(X_train, y_train)  # Not necessary because refit=True
     print(f'Test accuracy: {clf.score(X_test, y_test):.3f}')
+
+    y_pred = clf.predict(X_test)
+    confmat = confusion_matrix(y_true=y_test, y_pred=y_pred)
+    print(confmat)
+
+    pre_val = precision_score(y_true=y_test, y_pred=y_pred)
+    print(f"Precision: {pre_val:.3f}")
+    rec_val = recall_score(y_true=y_test, y_pred=y_pred)
+    print(f'Recall: {rec_val:.3f}')
+    f1_val = f1_score(y_true=y_test, y_pred=y_pred)
+    print(f'F1: {f1_val:.3f}')
+    mcc_val = matthews_corrcoef(y_true=y_test, y_pred=y_pred)
+    print(f'MCC: {mcc_val:.3f}')
 
 
 if __name__ == '__main__':
