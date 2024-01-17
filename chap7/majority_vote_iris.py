@@ -122,6 +122,8 @@ def main():
     plt.text(-12.5, 4.5, s='Petal length [standardized]', ha='center', va='center', fontsize=12, rotation=90)
     plt.show()
 
+    print(f"mv_clf.get_params() = {mv_clf.get_params()}")
+
 
 if __name__ == '__main__':
     main()
