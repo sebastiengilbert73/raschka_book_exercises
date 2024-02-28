@@ -8,7 +8,6 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname)s %(
 
 def main():
     logging.info("celeba_and_mnist.main()")
-
     celeba_dataset = torchvision.datasets.CelebA(
         root=r'C:\Users\sebas\Documents\datasets', split='train', target_type='attr', download=False
     )
